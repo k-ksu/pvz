@@ -1,0 +1,15 @@
+{
+  "host": "localhost",
+  "name": "homeworkDB",
+  "password": "password",
+  "port": "5433",
+  "user": "user",
+  "brokers": ["127.0.0.1:9091", "127.0.0.1:9092", "127.0.0.1:9093"],
+  "kafka_group": "homework-one",
+  "kafka_topic": "events",
+  "kafka_enable": false,
+  "file_orders": "orders_book.json",
+  "grpc_port": 50051,
+  "http_port": 50052,
+  "swagger_port": 50053
+}

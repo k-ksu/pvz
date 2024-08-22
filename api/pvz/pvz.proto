@@ -1,0 +1,122 @@
+syntax = "proto3";
+
+package pvz;
+
+option go_package = "HomeWork_1/pkg/grpc/pvz;pvz";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+
+service PVZ {
+  rpc AcceptOrder (AcceptOrderRequest) returns (AcceptOrderResponse) {
+    option (google.api.http) = {
+      post: "/order/accept"
+      body: "*"
+    };
+  }
+
+  rpc ReturnOrder (ReturnOrderRequest) returns (ReturnOrderResponse) {
+    option (google.api.http) = {
+      delete: "/order/return"
+    };
+  }
+
+  rpc GiveOrder (GiveOrderRequest) returns (GiveOrderResponse) {
+    option (google.api.http) = {
+      put: "/order/give"
+    };
+  }
+
+  rpc GetOrders (GetOrdersRequest) returns (GetOrdersResponse) {
+    option (google.api.http) = {
+      get: "/get_orders"
+    };
+  }
+
+  rpc ReturnOrderFromClient (ReturnOrderFromClientRequest) returns (ReturnOrderFromClientResponse) {
+    option (google.api.http) = {
+      put: "/order/return_from_client"
+    };
+  }
+
+  rpc GetReturns (GetReturnsRequest) returns (GetReturnsResponse) {
+    option (google.api.http) = {
+      get: "/returns"
+    };
+  }
+}
+
+message AcceptOrderRequest {
+  string orderID = 1;
+  string clientID = 2;
+  string date = 3;
+  int32 price = 4;
+  int32 weight = 5;
+  string package = 6;
+}
+
+message AcceptOrderResponse {
+  string status = 1;
+}
+
+message ReturnOrderRequest {
+  string orderID = 1;
+}
+
+message ReturnOrderResponse{
+  string status = 1;
+}
+
+message GiveOrderRequest {
+  string orders = 1;
+  string package = 2;
+}
+
+message GiveOrderResponse {
+  string status = 1;
+  int32 amountToBePaid = 2;
+}
+
+message GetOrdersRequest {
+  string clientID = 1;
+  string action = 2;
+}
+
+message Order {
+  string orderID = 1;
+  string clientID = 2;
+  string condition = 3;
+  google.protobuf.Timestamp arrivedAt = 4;
+  google.protobuf.Timestamp receivedAt = 5;
+  int32 price = 6;
+  string package = 7;
+  int32 maxWeight = 8;
+}
+
+message GetOrdersResponse {
+  string status = 1;
+  repeated Order orders = 2;
+}
+
+message ReturnOrderFromClientRequest {
+  string orderID = 1;
+  string clientID = 2;
+}
+
+message ReturnOrderFromClientResponse {
+  string status = 1;
+}
+
+message GetReturnsRequest {
+  int32 pageSize = 1;
+  int32 pageNumber = 2;
+}
+
+message GetReturnsResponse {
+  string status = 1;
+  repeated Order orders = 2;
+  int32 maxPage = 3;
+  int32 pageSize = 4;
+  int32 pageNumber = 5;
+}
+

@@ -1,0 +1,30 @@
+package errs
+
+import "github.com/pkg/errors"
+
+var (
+	ErrPageNumberIsLarge       = errors.New("слишком большой номер страницы")
+	ErrObjectNotFound          = errors.New("not found")
+	ErrPackageDoesNotSet       = errors.New("pack of order is empty")
+	ErrArrivedAtInPast         = errors.New("срок хранения не может быть в прошлом")
+	ErrOrderWasAlreadyAccepted = errors.New("заказ с таким ID уже был принят на ПВЗ")
+	ErrOrdersNotOfOneClient    = errors.New("не все заказы принадлежат одному клиенту")
+	ErrUnknownAction           = errors.New("unknown action")
+	ErrOrderWasReceived        = errors.New("заказ не был получен или уже возвращен")
+	ErrReturnTimeExpired       = errors.New("время для возврата товара истекло")
+	ErrOrderDoesNotReceived    = errors.New("данный заказ не существует")
+	ErrDateTimeIncorrectType   = errors.New("некорректный тип срока хранения")
+	ErrUnknownCacheType        = errors.New("unknown cache type")
+	ErrUnknownOrder            = errors.New("no such order")
+	ErrOrderCannotBeReturned   = errors.New("order cannot be returned")
+	ErrNegativePageNumber      = errors.New("pageNumber cannot be negative")
+	ErrNegativePageSize        = errors.New("pageSize cannot be negative")
+	ErrEmptyClientID           = errors.New("ID of client is empty")
+	ErrEmptyOrderID            = errors.New("ID of order is empty")
+	ErrIncorrectAction         = errors.New("action is not correct")
+	ErrEmptyListOrders         = errors.New("list of orders is empty")
+	ErrEmptyDate               = errors.New("date of order is empty")
+	ErrSmallPrice              = errors.New("price is too small")
+	ErrSmallWeight             = errors.New("weight is too small")
+	ErrIncorrectPackageType    = errors.New("указан некорректный тип упаковки")
+)
